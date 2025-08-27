@@ -40,5 +40,10 @@ public class LivroServiceImpl implements LivroService{
 	public List<Livro> buscarPorAutor(String autor) {
 		return livroRepositorio.findByAutor(autor);
 	}
-
+	
+	@Override
+	public Livro salvar(Livro livro) {
+		return livroRepositorio.save(livro);
+	}
+	
 }

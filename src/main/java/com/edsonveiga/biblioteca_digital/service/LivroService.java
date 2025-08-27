@@ -13,4 +13,5 @@ public interface LivroService {
 	Livro buscarPorId(Long id);
 	Livro excluirPorId(Long id);
 	List<Livro> buscarPorAutor(String autor);
+	Livro salvar(Livro livro);
 }
