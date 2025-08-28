@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +30,7 @@ public class LivroController {
 	}
 	
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public ResponseEntity<List<Livro>> getLivros() {
 		return ResponseEntity.ok(livroService.listarTodos());
 	}
@@ -44,9 +45,15 @@ public class LivroController {
 		return ResponseEntity.ok(livroService.buscarPorId(id));
 	}
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	public ResponseEntity<Livro> salvar(@Valid @RequestBody Livro livro) {
 		return new ResponseEntity<>(livroService.salvar(livro), HttpStatus.CREATED);
+	}
+	
+	@DeleteMapping("/{id}/deletar")
+	public ResponseEntity<Void> deletar(@PathVariable Long id) {
+		livroService.excluirPorId(id);
+		return ResponseEntity.noContent().build();
 	}
 	
 }
