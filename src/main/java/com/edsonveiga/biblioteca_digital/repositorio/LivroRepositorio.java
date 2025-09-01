@@ -10,5 +10,5 @@ import com.edsonveiga.biblioteca_digital.entity.Livro;
 @Repository
 public interface LivroRepositorio extends JpaRepository <Livro, Long> {
 
-	public List<Livro> findByAutor(String autor);
+	List<Livro> findByAutor(String autor);
 }
