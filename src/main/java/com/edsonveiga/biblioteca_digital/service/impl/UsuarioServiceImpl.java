@@ -43,7 +43,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Override
 	public Usuario buscarPorUsername(String userName) {
-		usuarioRepositorio.findByUsername(userName);
+	    return usuarioRepositorio.findByUsername(userName)
+	            .orElseThrow(() -> new RuntimeException("Usuário não encontrado: " + userName));
 	}
 
 }
