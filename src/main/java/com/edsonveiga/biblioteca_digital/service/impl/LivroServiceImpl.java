@@ -3,12 +3,13 @@ package com.edsonveiga.biblioteca_digital.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.edsonveiga.biblioteca_digital.entity.Livro;
 import com.edsonveiga.biblioteca_digital.repositorio.LivroRepositorio;
 import com.edsonveiga.biblioteca_digital.service.LivroService;
 
-
+@Service
 public class LivroServiceImpl implements LivroService{
 
 	private final LivroRepositorio livroRepositorio;

@@ -5,10 +5,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.edsonveiga.biblioteca_digital.entity.Usuario;
 import com.edsonveiga.biblioteca_digital.repositorio.UsuarioRepositorio;
 
+@Service
 public class AuthService implements UserDetailsService {
 
 	private final UsuarioRepositorio usuarioRepositorio;

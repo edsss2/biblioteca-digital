@@ -1,6 +1,8 @@
 package com.edsonveiga.biblioteca_digital.util;
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +12,15 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "DaQtUisjnxYuuLresVLW2ovVNuB7Kz+jjAWXID0gGvw";
+    // A chave secreta deve ser, no mínimo, 32 bytes (256 bits) para HS256.
+    // Recomendo gerar uma nova chave segura e manter aqui ou em um arquivo de configuração.
+    // Exemplo de chave segura gerada e codificada em Base64:
+    // private static final String SECRET_KEY = "sua-nova-chave-secreta-segura-e-longa-aqui-32bytes-em-base64";
+    
     private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1h
 
-    private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    // Crie a chave uma única vez
+    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     public String generateToken(String username) {
         return Jwts.builder()
@@ -25,7 +32,7 @@ public class JwtUtil {
     }
 
     public String extractUsername(String token) {
-        return Jwts.parserBuilder()
+        return Jwts.parser() // <--- AQUI ESTÁ A MUDANÇA
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
@@ -43,7 +50,7 @@ public class JwtUtil {
     }
 
     private boolean isTokenExpired(String token) {
-        Date expiration = Jwts.parserBuilder()
+        Date expiration = Jwts.parser() // <--- E AQUI TAMBÉM
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)

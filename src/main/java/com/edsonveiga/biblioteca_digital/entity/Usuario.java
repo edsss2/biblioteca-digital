@@ -1,6 +1,6 @@
 package com.edsonveiga.biblioteca_digital.entity;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
 
 import com.edsonveiga.biblioteca_digital.enums.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,7 +24,6 @@ public class Usuario {
 	@Column(unique = true)
 	private String username;
 
-	@JsonIgnore
 	private String senha;
 	
 	@Enumerated(EnumType.STRING)
