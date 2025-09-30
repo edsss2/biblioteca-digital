@@ -49,6 +49,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Usuario usuario) {
+    	System.out.println("Entou nesse método");
         usuarioService.salvar(usuario); // implemente para salvar com senha criptografada
         return ResponseEntity.ok("Usuário registrado com sucesso!");
     }

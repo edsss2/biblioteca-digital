@@ -1,26 +1,15 @@
 <div class="d-flex justify-content-center align-items-center vh-100">
-  <div class="card p-4 shadow" style="width: 400px;">
-    <h3 class="text-center mb-4">Registrar-se</h3>
-    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+  <div class="card p-4 shadow" style="width: 350px;">
+    <h3 class="text-center mb-4">Login</h3>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div class="mb-3">
-        <label for="nome" class="form-label">Nome</label>
+        <label for="nome" class="form-label">nome</label>
         <input
           type="text"
           id="nome"
           class="form-control"
           name="nome"
           [(ngModel)]="nome"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input
-          type="email"
-          id="email"
-          class="form-control"
-          name="email"
-          [(ngModel)]="email"
           required
         />
       </div>
@@ -37,11 +26,14 @@
       </div>
       <button
         type="submit"
-        class="btn btn-success w-100"
-        [disabled]="registerForm.invalid"
+        class="btn btn-primary w-100"
+        [disabled]="loginForm.invalid"
       >
-        Registrar
+        Entrar
       </button>
+      <p class="mt-3 text-center">
+        Não tem conta? <a routerLink="/register" routerLinkActive="active">Registrar-se</a>
+      </p>
     </form>
   </div>
 </div>

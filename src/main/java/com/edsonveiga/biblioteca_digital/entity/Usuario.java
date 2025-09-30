@@ -3,7 +3,6 @@ package com.edsonveiga.biblioteca_digital.entity;
 import jakarta.persistence.Id;
 
 import com.edsonveiga.biblioteca_digital.enums.Role;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

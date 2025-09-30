@@ -36,6 +36,9 @@ public class SecurityConfig {
 
                         .anyRequest().authenticated()
                 )
+                .headers(headers -> headers
+                	    .frameOptions(frame -> frame.disable())
+                	)
                 .userDetailsService(authService)
                 .build();
     }
