@@ -34,10 +34,10 @@ export class Register {
     this.authService.register(this.usuario).subscribe({
     next: (res) => {
       console.log("Registro bem-sucedido!", res);
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     },
     error: (err) => {
-      console.error("Erro no registro:", err);
+      console.error("Erro no registro: ", err);
     }
   });
   }
