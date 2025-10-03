@@ -13,4 +13,12 @@ export class AuthTokenStorage {
   set(token: string) {
     this.localStorageToken.setItem(this.key, token);
   }
+
+  get(): string | null {
+    return this.localStorageToken.getItem(this.key);
+  }
+
+  clear() {
+    this.localStorageToken.removeItem(this.key);
+  }
 }

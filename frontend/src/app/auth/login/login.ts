@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth-service';
 import { LoginRequest } from '../../models/login-request.model';
 import { LoginResponse } from '../../models/login-response.model';
 import { Router } from '@angular/router';
+import { AuthTokenStorage } from '../../services/auth-token-storage';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class Login {
     token: ''
   };
 
-  constructor(private authService : AuthService, private router: Router) {}
+  constructor(private authService : AuthService, private router: Router, private authTokenStorage : AuthTokenStorage) {}
 
   onSubmit(event?: Event) {
     if (event) event.preventDefault();
@@ -31,6 +32,8 @@ export class Login {
     this.authService.login(this.loginRequest).subscribe({
       next: (res) => {
         console.log("Login bem-sucedido!", res);
+
+        this.authTokenStorage.set(res.token);
         this.loginResponse = res;
         this.router.navigate(['/']);
       },
